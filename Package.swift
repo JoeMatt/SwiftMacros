@@ -13,7 +13,7 @@ let package = Package(
         ),
     ],
     dependencies: [
-        .package(url: "https://github.com/swiftlang/swift-syntax.git", from: "600.0.1"),
+        .package(url: "https://github.com/swiftlang/swift-syntax.git", from: "602.0.0"),
         .package(url: "https://github.com/swiftlang/swift-docc-plugin.git", from: "1.4.3"),
         .package(url: "https://github.com/ShenghaiWang/SwiftKeychain.git", from: "0.2.0")
     ],
