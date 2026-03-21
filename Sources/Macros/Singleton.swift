@@ -20,7 +20,12 @@ public struct Singleton: MemberMacro {
         let initializer = try InitializerDeclSyntax("private \(raw: override)init()") {}
 
         let selfToken: TokenSyntax = "\(raw: identifier.text)()"
-        let initShared = FunctionCallExprSyntax(calledExpression: DeclReferenceExprSyntax(baseName: selfToken)) {}
+        let initShared = FunctionCallExprSyntax(
+            calledExpression: ExprSyntax(DeclReferenceExprSyntax(baseName: selfToken)),
+            leftParen: .leftParenToken(),
+            arguments: LabeledExprListSyntax([]),
+            rightParen: .rightParenToken()
+        )
         let sharedInitializer = InitializerClauseSyntax(equal: .equalToken(trailingTrivia: .space),
                                                         value: initShared)
 
