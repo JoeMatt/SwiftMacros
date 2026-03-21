@@ -149,7 +149,8 @@ extension TypeSyntax {
             return "[" + (type.mockValue(randomValue: randomValue) ?? "nil") + "]"
         } else if let type = self.as(IdentifierTypeSyntax.self),
                   type.name.text == "Set",
-                  let genericType = type.genericArgumentClause?.arguments.first?.argument {
+                  let genericArg = type.genericArgumentClause?.arguments.first?.argument,
+                  case .type(let genericType) = genericArg {
             return "[" + (genericType.mockValue(randomValue: randomValue) ?? "nil") + "]"
         }
         return nil
